@@ -58,3 +58,72 @@ select mod(3,4);
 #rand
 select rand();
 
+#round
+select round(2.345,2);
+
+#案例:通過數據庫的函數，生成一個六位數的隨機數
+select lpad(round(rand()*100000,0),6,'0');
+
+#日期函數
+#curdate()
+select curdate();
+
+#curtime()
+select curtime();
+
+#now()
+select now();
+
+#year,month,day
+select YEAR(now());
+
+select month(now());
+
+select day(now());
+
+#date_add
+select date_add(now(),INTERVAL 70 year);
+
+#datediff
+select datediff('2021-12-01','2021-11-01');
+
+#查詢所有員工的入職天數，並根據入職天數倒序排序
+select name,datediff(curdate(),entrydate) as 'entrydate' from  itcast.emp;
+
+#流程函數
+#if
+select if(true,'Ok','Error');
+
+#ifnull
+select ifnull('Ok','Default');
+
+select ifnull('','Default');
+
+select ifnull(null,'Default');
+
+#case when then else end
+#需求:查詢emp表的員工姓名和工作地址(北京、上海->一線城市;其他->二線城市
+select
+    name,
+    case workaddress when '北京'then '一線城市'when '上海' then '一線城市'else '二線城市' end
+from itcast.emp;
+#統計班級各個同學的成績，展示範例如下
+#->=85，展示優秀
+#->=60，展示及格
+#->否則，展示不及格
+
+create table score(
+    id int comment 'ID',
+    name varchar(20) comment '姓名',
+    math int comment '數學',
+    english int comment '英語',
+    chinese int comment '語文',
+)comment '學員成績表';
+insert into 
+
+
+
+
+
+
+

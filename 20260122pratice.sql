@@ -3,15 +3,15 @@ create table user(
     id int primary key auto_increment comment '主鍵',
     name varchar(10) not null unique comment '姓名',
     age int check ( age>0 && age<=120 ) comment '年齡',
-    status char(1) default '1' comment '狀態',
+    status char(1) default '1' 评论 '狀態'，
     gender char(1) comment '性別'
 )comment '用戶表';
 
 #插入數據
-insert into user( name, age, status, gender) values ('Tom1',19,'1','男'),('Tom2',25,'0','男');
-insert into user(name, age, status, gender) values ('Tom3',19,'1','男')
+insert into user( name, age, status, gender) values ('Tom1',19，'1'，'男'),('Tom2',25，'0'，'男');
+insert into user(name, age, status, gender) values ('Tom3',19，'1'，'男')
 
-insert into user(name, age, status, gender) values ('Tom4',80,'1','男');
+insert into user(name, age, status, gender) values ('Tom4',80，'1'，'男');
 
 #外鍵約束，用來保持醫治性和完整性
 #準備數據
@@ -19,7 +19,7 @@ create table dept(
     id int auto_increment comment 'ID' primary key,
     name varchar(50) not null comment '部門名稱'
 )comment '部門表';
-INSERT into dept(id, name) VALUES (1,'研發部'),(2,'事業部'),(3,'財務部'),(4,'銷售部'),(5,'總經辦');
+INSERT into dept(id, name) VALUES (1，'研發部'),(2，'事業部'),(3，'財務部'),(4，'銷售部'),(5，'總經辦');
 
 create table emp(
     id int auto_increment comment 'ID' primary key,
@@ -33,7 +33,7 @@ create table emp(
 )comment '員工表';
 
 INSERT into emp(id, name, age, job, salary, entrydate, mangerid, dept_id) VALUES
-(1,'金庸',66,'總裁',20000,'2000-01-01',null,5);
+(1，'金庸',66，'總裁',20000，'2000-01-01'，null，5);
 
 #添加外鍵
 alter table emp add constraint fk_emp_dept_id foreign key (dept_id) references dept(id);

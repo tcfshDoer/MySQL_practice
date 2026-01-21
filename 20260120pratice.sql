@@ -108,22 +108,29 @@ select
     case workaddress when '北京'then '一線城市'when '上海' then '一線城市'else '二線城市' end
 from itcast.emp;
 #統計班級各個同學的成績，展示範例如下
-#->=85，展示優秀
-#->=60，展示及格
-#->否則，展示不及格
 
+USE itcast;
 create table score(
     id int comment 'ID',
     name varchar(20) comment '姓名',
     math int comment '數學',
     english int comment '英語',
-    chinese int comment '語文',
+    chinese int comment '語文'
 )comment '學員成績表';
-insert into 
+insert into score (id, name, math, english, chinese) VALUES (1,'Tom',67,88,95),(2,'Rose',23,66,90),(3,'Jack',56,98,76);
 
+#->=85，展示優秀
+#->=60，展示及格
+#->否則，展示不及格
 
-
-
+select
+    id,
+    score.name,
+    (case when score.math>=85 then '優秀' when score.math>=60 then '及格' else '不及格' end ) '數學',
+    (case when score.math>=85 then '優秀' when score.english>=60 then '及格' else '不及格' end ) '英語',
+    (case when score.math>=85 then '優秀' when score.chinese>=60 then '及格' else '不及格' end ) '語文'
+from score;
+ 
 
 
 
